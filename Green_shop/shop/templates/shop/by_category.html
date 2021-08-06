@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+{% block title %} Категорії {% endblock title %}
+{% block content %}
+    <main>
+        <section class="hero hero-by-category">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero_title">{{ current_category }}</h1>
+                    <p class="hero-descr">
+                       Зараз Ви&nbsp;переглядаєте список товарів в&nbsp;категорії "{{ current_category }}". До опису товару можна перейти натиснувши на його зображення або назву.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="category">
+            <div class="container">
+                <h2 class="site-title category-title">
+                    Товари
+                </h2>
+                <ul class="Products_list list-reset">
+                    {% for product in products %}
+                    <li class="Category_item">
+                        <a class='photo_link' href="{{ product.get_absolute_url }}">
+                            <h3 class="category_subtitle">{{ product.product_name }}</h3>
+                            <img class="cat_photo" src="../media/{{ product.photo }}">
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </section>
+        <section class="pre-footer">
+            <div class="container">
+                <h3 class="pre-footer-title">
+                   З&nbsp;радістю чекаємо на&nbsp;Ваші замовлення, детальну інформацію обговоримо по&nbsp;телефону
+                </h3>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

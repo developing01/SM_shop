@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+{% block title %} Саджанці Сергія Манжукова {% endblock title %}
+{% block content %}
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero_title">Агрогосподарство з&nbsp;різноманітним вибором товарів &laquo;SM&nbsp;GARDEN&raquo;</h1>
+                    <p class="hero-descr">
+                        Дбайливо вирощуємо наші рослини та&nbsp;ягоди, щоб кожен був задоволений нашою продукцією
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="search">
+            <h3 class="search-head">Пошук товару</h3>
+            <form action="{% url 'search' %}" method="get" class="s_form">
+                <input type="search" placeholder="Введіть назву..." name="q" class="form-control" required="">
+                <button type="submit" class="btn-1">
+                    <span class="search-span" aria-hidden="true">Пошук</span>
+                </button>
+            </form>
+        </section>
+        <section class="category">
+            <div class="container">
+                <h2 class="site-title category-title">
+                    Категорії
+                </h2>
+                <ul class="Category_list list-reset">
+                    {% for category in category_list %}
+                    <li class="Category_item">
+                        <a class='photo_link' href="{% url 'by_category' category.pk %}">
+                            <h3 class="category_subtitle">{{ category.name }}</h3>
+                            <img src="media/{{ category.photo }}">
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </section>
+        <section class="pre-footer">
+            <div class="container">
+                <h3 class="pre-footer-title">
+                   З&nbsp;радістю чекаємо на&nbsp;Ваші замовлення, детальну інформацію обговоримо по&nbsp;телефону
+                </h3>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
